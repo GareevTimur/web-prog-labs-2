@@ -12,3 +12,36 @@ app.register_blueprint(lab3)
 @app.route("/index")
 def start():
     return redirect("/menu", code=302)
+
+@app.route("/menu")
+def menu():
+    return """
+<!doctype html>
+<html>
+    <head>
+        <title>Гареев Тимур Артурович, лабораторная 1</title>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 1
+        </header>
+
+        <h1>web-сервер на flask</h1>
+
+        <h2>Меню</h2>
+        <ul>
+        <li><a href = "/lab1">Первая лабораторная</a></li>
+        </ul>
+        <ul>
+        <li><a href = "/lab2">Вторая лабораторная</a></li>
+        </ul>
+        <ul>
+        <li><a href = "/lab3">Третья лабораторная</a></li>
+        </ul>
+
+        <footer>
+            &copy; Гареев Тимур, ФБИ-23, 3 курс, 2024
+        </footer>
+    </body>
+</html>
+"""
