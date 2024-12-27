@@ -1,0 +1,6 @@
+users = [
+    {"login": "bob", "password": "555", "name": "Robert Kalter", "sex": "male"}, 
+    {"login": "jack", "password": "906", "name": "Jacob Witling", "sex": "male"}, 
+    {"login": "karl", "password": "2021", "name": "Pavel Reful", "sex": "male"}, 
+    {"login": "alex", "password": "2217", "name": "Alexandr Smith", "sex": "male"}
+]
