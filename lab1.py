@@ -1,38 +1,8 @@
 from flask import Blueprint, redirect, url_for
-app = Blueprint(__name__)
+lab1 = Blueprint('lab1',__name__)
 
-@app.route("/menu")
-def menu():
-    return """
-<!doctype html>
-<html>
-    <head>
-        <title>Гареев Тимур Артурович, лабораторная 1</title>
-    </head>
-    <body>
-        <header>
-            НГТУ, ФБ, Лабораторная работа 1
-        </header>
 
-        <h1>web-сервер на flask</h1>
-
-        <h2>Меню</h2>
-        <ul>
-        <li><a href = "/lab1">Первая лабораторная</a></li>
-        </ul>
-        <ul>
-        <li><a href = "/lab2">Вторая лабораторная</a></li>
-        </ul>
-        <ul>
-
-        <footer>
-            &copy; Гареев Тимур, ФБИ-23, 3 курс, 2024
-        </footer>
-    </body>
-</html>
-"""
-
-@app.route("/lab1")
+@lab1.route("/lab1/")
 def lab1():
     return """
 <!doctype html>
@@ -73,7 +43,7 @@ def lab1():
 </html>
 """
 
-@app.route("/lab1/oak")
+@lab1.route("/lab1/oak")
 def oak():
     return '''
 <!doctype html>
@@ -97,7 +67,7 @@ def oak():
 </html>
 '''
 
-@app.route("/lab1/student")
+@lab1.route("/lab1/student")
 def student():
     return '''
 <!doctype html>
@@ -121,7 +91,7 @@ def student():
 </html>
 '''
 
-@app.route("/lab1/python")
+@lab1.route("/lab1/python")
 def python():
     return '''
 <!doctype html>
@@ -165,7 +135,7 @@ def python():
 '''
 
 
-@app.route("/lab1/legend")
+@lab1.route("/lab1/legend")
 def legend():
     return '''
 <!doctype html>
