@@ -31,8 +31,30 @@ def example():
         {'author': 'Стивен Кинг','naming':'Кладбище Домашних животных', 'genre': 'Ужасы', 'pages': 373},
         {'author': 'Дж.Р.Р.Толкин','naming':'Сильмариллион', 'genre': 'Повесть', 'pages': 365}
     ]
-    return render_template('example.html', name=name, number=number, group=group, course=course, fruits=fruits, books=books)
+    return render_template('lab2/example.html', name=name, number=number, group=group, course=course, fruits=fruits, books=books)
 
 @app.route('/lab2/')
 def lab2():
     return render_template('lab2/lab2.html')
+
+@app.route('/lab2/creatures')
+def creatures():
+    monsters = [
+        {'name': 'Грифон', 'pic': 'грифон.jpeg', 'description': '''
+            Грифоны — противоречивые существа, одновременно объединяющие Небеса и Землю.
+         '''},
+         {'name': 'Минотавр', 'pic': 'минотавр.jpg', 'description': '''
+            Минота́вр  — по греческому преданию, чудовище с телом человека и головой быка.
+         '''},
+         {'name': 'Циклоп', 'pic': 'циклоп.jpg', 'description': '''
+            Циклопы — одноглазые монстры, в разных версиях божественные существа или либо отдельный народ.
+         '''},
+         {'name': 'Бафомет', 'pic': 'бафомет.jpeg', 'description': '''
+            Бафомет - божество знаний и мудрости у эзотериков и оккультистов.
+         '''},
+         {'name': 'Импундулу', 'pic': 'импундулу.jpeg', 'description': '''
+            Импундулу — птица размером с человека, с мощными крыльями, из кончиков которых
+            вылетают молнии, миф о которой распространен в Южной Африке
+         '''}
+    ]
+    return render_template('lab2/creatures.html', monsters=monsters)
