@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template
-lab2 = Blueprint('lab2',__name__)
+lab2 = Blueprint('lab2', __name__)
+
 
 @lab2.route("/lab2/example")
 def example():
@@ -28,9 +29,11 @@ def example():
     ]
     return render_template('lab2/example.html', name=name, number=number, group=group, course=course, fruits=fruits, books=books)
 
+
 @lab2.route('/lab2/')
-def lab2():
+def lab():
     return render_template('lab2/lab2.html')
+
 
 @lab2.route('/lab2/creatures')
 def creatures():
