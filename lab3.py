@@ -148,3 +148,11 @@ def ticket():
                            place=place, departure=departure, arrival=arrival, date=date, 
                            underwear=underwear, luggage=luggage, belay=belay)
 
+@lab3.route('/lab3/del_settings')
+def del_settings():
+    resp = make_response(redirect('/lab3/settings'))
+    cookies = request.cookies.keys()
+    for cookie in cookies:
+        resp.set_cookie(cookie, '', expires=0)
+    return resp
+
