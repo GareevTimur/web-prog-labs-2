@@ -8,4 +8,5 @@ def start():
 
 @app.route("/lab2/example")
 def example():
-    return render_template('example.html')
+    name = 'Тимур'
+    return render_template('example.html', name=name)
