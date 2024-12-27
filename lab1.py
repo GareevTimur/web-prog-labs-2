@@ -1,6 +1,38 @@
-from flask import Blueprint, redirect, url_for
+from flask import Blueprint, redirect, url_for, render_template
 lab1 = Blueprint('lab1',__name__)
 
+@lab1.route("/menu")
+def menu():
+    return """
+<!doctype html>
+<html>
+    <head>
+        <title>Гареев Тимур Артурович, лабораторная 1</title>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 1
+        </header>
+
+        <h1>web-сервер на flask</h1>
+
+        <h2>Меню</h2>
+        <ul>
+        <li><a href = "/lab1">Первая лабораторная</a></li>
+        </ul>
+        <ul>
+        <li><a href = "/lab2">Вторая лабораторная</a></li>
+        </ul>
+        <ul>
+        <li><a href = "/lab3">Третья лабораторная</a></li>
+        </ul>
+
+        <footer>
+            &copy; Гареев Тимур, ФБИ-23, 3 курс, 2024
+        </footer>
+    </body>
+</html>
+"""
 
 @lab1.route("/lab1/")
 def lab1():
@@ -50,16 +82,18 @@ def oak():
 <html>
     <head>
         <title>Гареев Тимур Артурович, лабораторная 1</title>
-          <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename = 'lab1/lab1.css') + ''' " />
+            <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename = 'lab1.css') + ''' " />
     </head>
     <body>
         <header>
-            НГТУ, ФБ, Лабораторная работа 1
+            НГТУ, ФБ, лабораторная работа 1
         </header>
+
         <div class="oak">
             <h1>Дуб</h1>
             <img src="''' + url_for('static', filename = 'lab1/oak.jpg') + ''' ">
         </div>
+
         <footer>
             &copy; Гареев Тимур, ФБИ-23, 3 курс, 2024
         </footer>
