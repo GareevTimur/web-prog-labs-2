@@ -27,6 +27,10 @@ def del_cookie():
     resp.set_cookie('name_color')
     return resp
 
+@lab3.route('/lab3/order')
+def order():
+    return render_template('lab3/order.html')
+
 @lab3.route('/lab3/form1')
 def form1():
     errors = {}
