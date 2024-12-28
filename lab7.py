@@ -1,9 +1,78 @@
 from flask import Blueprint, render_template, request, current_app
 lab7 = Blueprint('lab7',  __name__ ) 
 
+# database
+DBS = '?'
+def db_connect():
+    global DBS
+    if current_app.config['DB_TYPE'] == 'postgres':
+        conn = psycopg2.connect(
+            host = '127.0.0.1',
+            database = 'pavel_krasov_knowledge_base',
+            user = 'pavel_krasov_knowledge_base',
+            password = '777'
+        )
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        DBS = '%s'
+    else:
+        dir_path = path.dirname(path.realpath(__file__))
+        db_path = path.join(dir_path, "database.db")
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+    
+    return conn, cur
+
+def db_close(conn, cur):
+    conn.commit()
+    cur.close()
+    conn.close()
+
+films = []
+def getFilmList():
+    global films
+
+    conn, cur = db_connect()
+    cur.execute("Select * From films order by id")
+    films = cur.fetchall()    
+    db_close(conn, cur)
+    return films
+
+def getFilmByID(id):
+    conn, cur = db_connect()
+    cur.execute("Select * From films where id = " + DBS + ";", (id, ))
+    film = cur.fetchone()    
+    db_close(conn, cur)
+    
+    return film
+
+def updateFilm(film):
+    conn, cur = db_connect()
+    cur.execute("update films set title=" + DBS + ", title_ru=" + DBS + ", year=" + DBS + ", description=" + DBS + 
+                   " where id=" + DBS + ";",
+                (film['title'],film['title_ru'],film['year'],film['description'],film['id'],)  )
+    conn.commit()
+    db_close(conn, cur)
+
+def deleteFilm(id):
+    conn, cur = db_connect()
+    cur.execute("Delete From films Where id=" + DBS + ";", (id, ))
+    conn.commit()
+    db_close(conn, cur) 
+
+def insertFilm(film):
+    conn, cur = db_connect()
+    cur.execute("insert into films  (title, title_ru, year, description)  Values (" + DBS + "," + DBS + "," + DBS + "," + DBS + 
+                    ");",
+                (film['title'],film['title_ru'],film['year'],film['description'],)  )
+    conn.commit()
+    db_close(conn, cur)
+
+
 @lab7.route('/lab7/') 
 def main(): 
     return render_template('lab7/index.html') 
+
 
 @lab7.route('/lab7/rest-api/films/', methods=['GET'])
 def films_list():
