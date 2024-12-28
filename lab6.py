@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template 
-from flask import Blueprint, redirect, url_for, render_template, request, session, current_app
+from flask import Blueprint, redirect, url_for, session, current_app, render_template, request
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import sqlite3
